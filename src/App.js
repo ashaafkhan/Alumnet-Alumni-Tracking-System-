@@ -1,24 +1,37 @@
-import logo from './logo.svg';
+import React from 'react';
+import {BrowserRouter,Routes,Route} from "react-router-dom";
 import './App.css';
+import Home from './pages/Home';
+import AddEdit from './pages/AddEdit';
+import View from './pages/View';
+import Signin from './components/Signin';
+import Main from './components/Main';
+import Navbar from './components/Navbar';
+import Sidebar from './components/Sidebar';
+import Chat from './components/Chat';
+import { ToastContainer} from 'react-toastify';
+  import 'react-toastify/dist/ReactToastify.css';
+import Header from './components/Header';
 
 function App() {
   return (
+    <BrowserRouter>
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header/>
+      <ToastContainer position="top-center" />
+      <Routes>
+        <Route exact path='/' Component={Home}/>
+        <Route exact path='/add' Component={AddEdit}/>
+        <Route exact path='/update/:id' Component={AddEdit}/>
+        <Route exact path='/view/:id' Component={View}/>
+        <Route exact path='/signin' Component={Signin}/>
+        <Route exact path='/main' Component={Main}/>
+        <Route exact path='/navbar' Component={Navbar}/>
+        <Route exact path='/sidebar' Component={Sidebar}/>
+        <Route exact path='/chat' Component={Chat}/>
+      </Routes>
     </div>
+    </BrowserRouter>
   );
 }
 
